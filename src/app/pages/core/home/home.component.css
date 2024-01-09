@@ -1,0 +1,53 @@
+.carousel-inner .carousel-item img
+{
+    object-fit: cover;
+}
+
+.carousel-caption h2
+{
+    color: #E50914;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.carousel-caption p
+{
+    color: #ffffff;
+}
+
+.row-poster
+{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.row-img
+{
+    object-fit: contain;
+    width: 100%;
+    box-sizing: content-box;
+    transition: transform 500ms;
+    margin-left: 1%;
+}
+
+h5
+{
+color: #ffffff;
+}
+
+.row-img:hover
+{
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+.large-poster{
+    max-height: 300px;
+}
+
+.row-poster::-webkit-scrollbar
+{
+    display: none;
+}
+
