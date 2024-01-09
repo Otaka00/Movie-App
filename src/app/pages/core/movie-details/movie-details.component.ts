@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
-import { Title,Meta } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,6 +10,9 @@ import { Title,Meta } from '@angular/platform-browser';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
+
+  // Declare environment as a public property
+  environment = environment;
 
   constructor(private service:MovieApiServiceService,
   private router:ActivatedRoute,
