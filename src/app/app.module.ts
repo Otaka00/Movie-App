@@ -25,7 +25,7 @@ import { MovieApiServiceService } from './pages/core/service/movie-api-service.s
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [MovieApiServiceService],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
 import { UserService } from 'src/app/pages/auth/service/user.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';

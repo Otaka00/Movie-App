@@ -33,7 +33,7 @@
     <div class="row-poster mt-3 p-2 thriller-movie">
       <ng-container *ngFor="let th of thrillerMovieResult">
         <img src="{{ environment.imageBaseUrl }}/{{ th.poster_path }}" class="row-img large-poster" alt="Image not available"
-          [routerLink]="['/movie:',th.id]">
+          [routerLink]="['/movie',th.id]">
       </ng-container>
 
     </div>
