@@ -13,7 +13,6 @@ export class MovieApiServiceService {
   private baseurl = environment.apiUrl;
   private apikey = environment.apiKey;
 
-
   // trendingmovieapidata
   trendingMovieApiData(): Observable<any> {
     return this.http.get(`${this.baseurl}/trending/movie/day?api_key=${this.apikey}`);
