@@ -1,6 +1,6 @@
 import { Component,HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 import { UserService } from 'src/app/pages/auth/service/user.service';
 
 @Component({

@@ -8,17 +8,8 @@
 .login-container {
   border: solid #000000;
   border-radius: 2%;
-  padding: 5%;
-  width: 50vh;
-  margin: auto;
-}
-
-.container {
-  background-color: #333;
   padding: 2%;
-  border-radius: 2%;
-  box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 50vh;
 }
 
 input {
@@ -31,40 +22,31 @@ input {
 
 h2 {
   text-align: center;
-  color: black;
-}
-
-label {
-  color: black;
 }
 
 
 button {
   background-color: #4caf50;
   color: white;
-  padding: 1%;
   border: none;
   border-radius: 2%;
   cursor: pointer;
 }
 
 .button-container {
-  margin-top: 2%;
   text-align: center;
-  align-items: center;
 }
 
 .login-button, .register-button {
   background-color: #6c757d;
   color: #fff;
-  border-radius: 5%;
-  border: 5%;
-  display: flex;
+  border-radius: 5vh;
+  border: 2%;
   width: 90%;
   padding: 2%;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 5%;
 }
 
+button:hover {
+  background-color: #ff0000;
+}
