@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
 import { UserService } from 'src/app/pages/auth/service/user.service';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   // Declare environment as a public property
   environment = environment;
+  isPageReloaded: boolean = false; // Variable to track if the page is reloaded
 
   constructor(private service: MovieApiServiceService,
               private title:Title,
@@ -28,7 +29,12 @@ export class HomeComponent implements OnInit {
   thrillerMovieResult: any = [];
 
   ngOnInit(): void {
+  const isReloaded = localStorage.getItem('isPageReloaded');
+
     this.userService.isLogging();
+    this.userService.isLoggingIn = true;
+    this.userService.isLoggedIn();
+
     this.trendingData();
     this.comedyMovie();
     this.thrillerMovie();

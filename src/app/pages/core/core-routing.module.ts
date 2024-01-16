@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, NavigationEnd } from '@angular/router';
 import { CoreModule } from './core.module';
-import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 const coreRoutes: Routes = [
   {

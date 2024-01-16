@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './login.component.html',
   styleUrls: ['./login-register.component.css']
 })
+
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
@@ -39,9 +40,6 @@ navigateToRegister() {
         const { email, password } = this.loginForm.value;
 
           if (email === "admin@gmail.com" && password === "123456") {
-              const credentials = btoa(`${email}:${password}`);
-              this.userService.saveToken(credentials);
-              this.userService.isLoggingIn = true;
             this.router.navigate(['/home']);
             alert('Logged in successfully');
           }

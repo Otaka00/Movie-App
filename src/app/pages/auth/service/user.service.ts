@@ -51,7 +51,6 @@ export class UserService {
     this.isLoggingIn = false;
     this.removeToken();
   }
-
   isLogging(): boolean {
    return this.isLoggingIn;
   }
