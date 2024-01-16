@@ -12,7 +12,7 @@
     {path: 'home', component:HomeComponent, canActivate: [AuthGuard] },
     { path:'movie/:id', component:MovieDetailsComponent,canActivate: [AuthGuard] },
     {path:'register', component:RegisterComponent},
-    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Set default route to '/login'
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
   ];
 
   @NgModule({

@@ -27,8 +27,8 @@ constructor(private fb: FormBuilder,
     });
   }
 register() {
-if (this.registerForm.valid) {
-const { email, password } = this.registerForm.value;
+  if (this.registerForm.valid) {
+     const { email, password } = this.registerForm.value;
 
       if (this.userService.addUser({ email, password })) {
         // Registration successful, navigate to login
