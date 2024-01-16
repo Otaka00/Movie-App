@@ -12,6 +12,6 @@ import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [HomeComponent, MovieDetailsComponent],
-  imports: [CommonModule, RouterModule, CoreRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserModule],
+  imports: [CoreRoutingModule,CommonModule, RouterModule, CoreRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserModule],
 })
 export class CoreModule {}
