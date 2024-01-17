@@ -37,7 +37,7 @@
           this.service.getMovieDetails(id).subscribe(async(result)=>{
           console.log(result,'getmoviedetails#');
           this.getMovieDetailResult = await result;
-           this.title.setTitle(`${this.getMovieDetailResult?.original_title}`);
+          this.title.setTitle(`${this.getMovieDetailResult?.original_title}`);
            this.meta.updateTag({name:'title',content:this.getMovieDetailResult?.original_title});
            this.meta.updateTag({name:'description',content:this.getMovieDetailResult?.overview});
       });
