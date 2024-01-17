@@ -10,6 +10,7 @@
   border-radius: 2%;
   padding: 2%;
   width: 55vh;
+  box-sizing: border-box;
 }
 
 input {
@@ -23,7 +24,6 @@ input {
 h2 {
   text-align: center;
 }
-
 
 button {
   background-color: #4caf50;
@@ -49,4 +49,15 @@ button {
 
 button:hover {
   background-color: #ff0000;
+}
+
+@media (max-width: 768px) {
+
+  .login-container {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  .login-button, .register-button {
+    width: 100%; /* Make buttons full-width on smaller screens */
+  }
 }
