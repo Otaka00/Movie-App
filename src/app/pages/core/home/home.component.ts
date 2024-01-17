@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
   thrillerMovieResult: any = [];
 
   ngOnInit(): void {
-  const isReloaded = localStorage.getItem('isPageReloaded');
+    const isReloaded = localStorage.getItem('isPageReloaded');
+    this.isPageReloaded = true; // Variable to track if the page is reloaded
 
     this.userService.isLogging();
     this.userService.isLoggingIn = true;

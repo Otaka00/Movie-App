@@ -1,4 +1,4 @@
-import { Component,HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthGuard } from 'src/app/guard/auth.guard';
 import { UserService } from 'src/app/pages/auth/service/user.service';
@@ -9,11 +9,20 @@ import { UserService } from 'src/app/pages/auth/service/user.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'IMDB';
   navbg:any;
    _routerUrl: string = '';
-
+///////
+//Added ngOnInit
+ngOnInit(): void {
+  if (!this.userService.isLogging()){
+    this.userService.isLoggingIn = false;
+  }
+  else  this.userService.isLoggingIn = true;
+  console.log("Ay session: ", this.userService.isLogging());
+}
+///////
   get routerUrl(): string {
     return this._routerUrl;
   }

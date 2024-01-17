@@ -30,18 +30,17 @@ register() {
   if (this.registerForm.valid) {
      const { email, password } = this.registerForm.value;
 
-      if (this.userService.addUser({ email, password })) {
+      this.userService.saveUser(email, password);
         // Registration successful, navigate to login
         this.router.navigate(['/login']);
         alert('Congrats! Account created successfully.');
-      } else {
-        // Email is already taken, show alert
-        alert('Email is already taken. Please choose another one.');
-      }
+
     } else {
       // Form is not valid, show alert
       alert('Please enter all required fields.');
     }
+        console.log('Registration form submitted:', this.registerForm.value);
+
     }
 
 }

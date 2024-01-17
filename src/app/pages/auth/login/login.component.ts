@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.initLoginForm();
-  }
+    }
 
   initLoginForm() {
     this.loginForm = this.fb.group({
@@ -38,17 +38,16 @@ navigateToRegister() {
   onSubmit() {
   if (this.loginForm.valid) {
         const { email, password } = this.loginForm.value;
+        const savedUser = this.userService.getUser();
 
-          if (email === "admin@gmail.com" && password === "123456") {
+         if (savedUser && savedUser.email === email && savedUser.password === password){
             this.router.navigate(['/home']);
             alert('Logged in successfully');
+            console.log("This session is: ",this.userService.isLoggedIn());
           }
-          else{
-          alert('Incorrect email or password. Please try again!');
-   }
+          else alert('Incorrect email or password. Please try again!');
 }
     else alert('Please fill all required fields. ');
-
 }
 }
 
