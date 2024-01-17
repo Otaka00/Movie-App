@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, inject, tick, fakeAsync } from '@angular/cor
 import { of, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetailsComponent } from './movie-details.component';
-import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
+import { MovieApiServiceService } from 'src/app/core/service/movie-api-service.service';
 import { Title, Meta } from '@angular/platform-browser';
 
 describe('MovieDetailsComponent', () => {

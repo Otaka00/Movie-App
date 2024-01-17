@@ -5,12 +5,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/core/home/home.component';
-import { MovieDetailsComponent } from './pages/core/movie-details/movie-details.component';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
+import { HomeComponent } from './core/home/home.component';
+import { MovieDetailsComponent } from './core/movie-details/movie-details.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
-import { MovieApiServiceService } from './pages/core/service/movie-api-service.service';
+import { MovieApiServiceService } from './core/service/movie-api-service.service';
 
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
-import { MovieApiServiceService } from 'src/app/pages/core/service/movie-api-service.service';
+import { MovieApiServiceService } from 'src/app/core/service/movie-api-service.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { environment } from 'src/environment/environment';

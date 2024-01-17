@@ -1,9 +1,9 @@
   import { NgModule } from '@angular/core';
   import { RouterModule, Routes } from '@angular/router';
-  import { HomeComponent } from './pages/core/home/home.component';
-  import { MovieDetailsComponent } from './pages/core/movie-details/movie-details.component';
-  import { LoginComponent } from './pages/auth/login/login.component';
-  import { RegisterComponent } from './pages/auth/register/register.component';
+  import { HomeComponent } from './core/home/home.component';
+  import { MovieDetailsComponent } from './core/movie-details/movie-details.component';
+  import { LoginComponent } from './auth/login/login.component';
+  import { RegisterComponent } from './auth/register/register.component';
   import { AuthGuard } from 'src/app/guard/auth.guard'
 
   const routes: Routes = [
