@@ -41,7 +41,6 @@ navigateToRegister() {
         const savedUser = this.userService.getUser();
       this.userService.saveToken('placeholderToken');
 
-//          if (savedUser && savedUser.email === email && savedUser.password === password){
          if (email === "admin@gmail.com" && password === "123456"){
             this.router.navigate(['/home']);
             alert('Logged in successfully');

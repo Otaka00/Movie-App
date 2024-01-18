@@ -5,9 +5,10 @@
   import { LoginComponent } from './auth/login/login.component';
   import { RegisterComponent } from './auth/register/register.component';
   import { AuthGuard } from 'src/app/guard/auth.guard'
+  import { LoginGuard } from 'src/app/guard/login.guard'
 
   const routes: Routes = [
-    {path:'login', component:LoginComponent,},
+    {path:'login', component:LoginComponent,canActivate: [LoginGuard] },
 
     {path: 'home', component:HomeComponent, canActivate: [AuthGuard] },
     { path:'movie/:id', component:MovieDetailsComponent,canActivate: [AuthGuard] },
