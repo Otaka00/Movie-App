@@ -21,15 +21,6 @@ export class UserService {
     return users.some((user) => user.email === email);
   }
 
-//   addUser(user: { email: string; password: string }): boolean {
-//     const users = this.getUsers();
-//     if (this.isEmailTaken(user.email))
-//       return false;
-//
-//     users.push(user);
-//     localStorage.setItem(this.storageKey, JSON.stringify(users));
-//     return true; // User added successfully
-//   }
 
   // Auth Guard
    isLoggedIn(): boolean {
@@ -40,7 +31,7 @@ export class UserService {
 
     // Save the token to local storage
     saveToken(token: string): void {
-      sessionStorage.setItem(this.tokenKey, token);
+      localStorage.setItem(this.tokenKey, token);
       this.isLogging();
   }
 

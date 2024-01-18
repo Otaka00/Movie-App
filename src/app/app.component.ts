@@ -13,8 +13,7 @@ export class AppComponent implements OnInit {
   title = 'IMDB';
   navbg:any;
    _routerUrl: string = '';
-///////
-//Added ngOnInit
+
 ngOnInit(): void {
   if (!this.userService.isLogging()){
     this.userService.isLoggingIn = false;
@@ -22,13 +21,13 @@ ngOnInit(): void {
   else  this.userService.isLoggingIn = true;
   console.log("Ay session: ", this.userService.isLogging());
 }
-///////
+
   get routerUrl(): string {
     return this._routerUrl;
   }
     logOut() {
-      sessionStorage.clear();
-      this.router.navigate(['']);
+      localStorage.clear();
+       this.router.navigate(['']);
       this.userService.logoutUser();
     }
 
