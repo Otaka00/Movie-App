@@ -49,6 +49,6 @@ navigateToRegister() {
           else alert('Incorrect email or password. Please try again!');
 }
     else alert('Please fill all required fields. ');
-}
+  }
 }
 
