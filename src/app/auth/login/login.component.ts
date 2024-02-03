@@ -39,14 +39,23 @@ navigateToRegister() {
   if (this.loginForm.valid) {
         const { email, password } = this.loginForm.value;
         const savedUser = this.userService.getUser();
-      this.userService.saveToken('placeholderToken');
+//       this.userService.saveToken('placeholderToken');
+   this.userService.authenticateUser(email, password).subscribe(
+      (response: any) => {
+        // Assuming the server returns a token in the response
+        const token = response.token;
 
-         if (email === "admin@gmail.com" && password === "123456"){
-            this.router.navigate(['/home']);
-            alert('Logged in successfully');
-            console.log("This session is: ",this.userService.isLoggedIn());
-          }
-          else alert('Incorrect email or password. Please try again!');
+        // Save the received token
+        this.userService.saveToken(token);
+
+        this.router.navigate(['/home']);
+        alert('Logged in successfully');
+        console.log("This session is: ", this.userService.isLoggedIn());
+      },
+      (error) => {
+        alert('Incorrect email or password. Please try again!');
+      }
+    );
 }
     else alert('Please fill all required fields. ');
   }

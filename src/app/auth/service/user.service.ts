@@ -1,5 +1,6 @@
 // user.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,14 @@ export class UserService {
   private storageKey2 = 'users';
   private readonly tokenKey = 'token'; // Add a token key
   isLoggingIn: boolean = false;
+
+  private AUTH_ENDPOINT = 'http://localhost:8080/api/v1/auth/authenticate';
+  constructor(private http: HttpClient) {}
+
+  authenticateUser(email: string, password: string) {
+    const credentials = { email, password };
+    return this.http.post(this.AUTH_ENDPOINT, credentials);
+  }
 
    getUsers(): { email: string; password: string }[]
     {
@@ -26,14 +35,21 @@ export class UserService {
    isLoggedIn(): boolean {
       this.isLoggingIn = true;
       // Check if there is a token in local storage
-      return localStorage.getItem(this.storageKey) ? true: false;
+//       return localStorage.getItem(this.storageKey) ? true: false;
+        return !!localStorage.getItem(this.tokenKey);
+
     }
 
     // Save the token to local storage
     saveToken(token: string): void {
       localStorage.setItem(this.tokenKey, token);
-      this.isLogging();
+      this.isLoggingIn = true;
   }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
 
     // Remove the token from local storage (during logging out)
     removeToken(): void {
