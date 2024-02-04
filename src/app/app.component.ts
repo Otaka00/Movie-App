@@ -15,11 +15,11 @@ export class AppComponent implements OnInit {
    _routerUrl: string = '';
 
 ngOnInit(): void {
-  if (!this.userService.isLogging()){
-    this.userService.isLoggingIn = false;
-  }
-  else  this.userService.isLoggingIn = true;
-  console.log("Ay session: ", this.userService.isLogging());
+//   if (!this.userService.isLogged()){
+//     this.userService.isLoggingIn = false;
+//   }
+//   else  this.userService.isLoggingIn = true;
+//   console.log("User session: ", this.userService.isLogged());
 }
 
   get routerUrl(): string {

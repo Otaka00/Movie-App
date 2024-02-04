@@ -12,7 +12,7 @@
   export class MovieDetailsComponent implements OnInit {
 
     // Declare environment as a public property
-    environment = environment;
+    imageUrl = environment.imageBaseUrl;
 
     constructor(private service:MovieApiServiceService,
     private router:ActivatedRoute,
@@ -22,32 +22,47 @@
     getMovieDetailResult:any;
     getMovieCastResult:any;
 
-    ngOnInit(): void {
+  movieId: number = 0;
+  getMovieDetail: any;
+  ngOnInit(): void {
+    this.movieId = Number(this.router.snapshot.paramMap.get('id'));
+    this.getMovie(this.movieId);
+  }
 
-      this.router.paramMap.subscribe((params) => {
-      let getParamId = params.get('id');
-      console.log(getParamId,'getparamid#');
 
-      this.getMovie(getParamId);
-      this.getMovieCast(getParamId);
-  });
-    }
+  getMovie(id: number) {
+    this.service.getMovie(id).subscribe((result) => {
+      this.getMovieDetailResult = result;
+    });
+  }
 
-    getMovie(id:any){
-          this.service.getMovieDetails(id).subscribe(async(result)=>{
-          console.log(result,'getmoviedetails#');
-          this.getMovieDetailResult = await result;
-          this.title.setTitle(`${this.getMovieDetailResult?.original_title}`);
-           this.meta.updateTag({name:'title',content:this.getMovieDetailResult?.original_title});
-           this.meta.updateTag({name:'description',content:this.getMovieDetailResult?.overview});
-      });
-    }
 
-    getMovieCast(id:any)
-    {
-      this.service.getMovieCast(id).subscribe((result)=>{
-        console.log(result,'movieCast#');
-        this.getMovieCastResult = result.cast;
-      });
-    }
+//     ngOnInit(): void {
+//
+//       this.router.paramMap.subscribe((params) => {
+//       let getParamId = params.get('id');
+//       console.log(getParamId,'getparamid#');
+//
+//       this.getMovie(getParamId);
+// //       this.getMovieCast(getParamId);
+//   });
+//     }
+//
+//     getMovie(id:any){
+//           this.service.getMovieDetails(id).subscribe(async(result)=>{
+//           console.log(result,'getmoviedetails#');
+//           this.getMovieDetailResult = await result;
+//           this.title.setTitle(`${this.getMovieDetailResult?.original_title}`);
+//            this.meta.updateTag({name:'title',content:this.getMovieDetailResult?.original_title});
+//            this.meta.updateTag({name:'description',content:this.getMovieDetailResult?.overview});
+//       });
+//     }
+// Removed for Integration
+//     getMovieCast(id:any)
+//     {
+//       this.service.getMovieCast(id).subscribe((result)=>{
+//         console.log(result,'movieCast#');
+//         this.getMovieCastResult = result.cast;
+//       });
+//     }
   }

@@ -13,8 +13,8 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
      {
-        console.log('Logging In Status: ',this.userService.isLogging());
-      if (state.url.includes('login') &&  localStorage.length != 0) {
+        console.log('Logging In Status: ',this.userService.isLogged());
+      if (state.url.includes('login') &&  this.userService.isLogged()) {
               // User is already logged in and trying to access the login page, redirect to home
               this.router.navigate(['/home']);
               return false;

@@ -10,8 +10,15 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./login-register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+  name: string = "";
+  email: string = "";
+  password: string = "";
+  registered: boolean = false;
   registerForm!: FormGroup;
   ngOnInit(): void {
+    if (this.userService.isLogged())
+        this.router.navigate(['/home']);
   }
 
 constructor(private fb: FormBuilder,
@@ -26,21 +33,35 @@ constructor(private fb: FormBuilder,
       reenteredPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-register() {
-  if (this.registerForm.valid) {
-     const { email, password } = this.registerForm.value;
 
-      this.userService.saveUser(email, password);
-        // Registration successful, navigate to login
-        this.router.navigate(['/login']);
-        alert('Congrats! Account created successfully.');
+    register() {
+        this.userService.register(this.email, this.password).subscribe(
+          () => {
+            this.router.navigate(['/login']);
+            alert('Congrats! Account created successfully.');
+          },
+          (error) => {
+            alert('Please enter all required fields.');
+          }
+        );
+       console.log('Registration form submitted:', this.registerForm.value);
+      }
 
-    } else {
-      // Form is not valid, show alert
-      alert('Please enter all required fields.');
-    }
-        console.log('Registration form submitted:', this.registerForm.value);
-
-    }
+//       register() {
+//         if (this.registerForm.valid) {
+//            const { email, password } = this.registerForm.value;
+//
+//       //       this.userService.saveUser(email, password);
+//               // Registration successful, navigate to login
+//               this.router.navigate(['/login']);
+//               alert('Congrats! Account created successfully.');
+//
+//           } else {
+//             // Form is not valid, show alert
+//             alert('Please enter all required fields.');
+//           }
+//               console.log('Registration form submitted:', this.registerForm.value);
+//
+//           }
 
 }

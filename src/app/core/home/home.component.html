@@ -1,43 +1,50 @@
 <br><br>
 <div class="contain mt-4 mb-4 p-4">
 
-  <!-- trending movies  -->
+
   <div class="row mt-4" style="overflow-x: auto">
-    <h4 class="text-black">Box Office Trending Movies</h4>
+    <h4 class="text-black">My Movies</h4>
     <div class="row-poster mt-3 p-2 trending-movie">
-      <ng-container *ngFor="let t of trendingMovieResult">
-        <img src="{{ environment.imageBaseUrl }}/{{ t.poster_path }}" class="row-img large-poster" alt="Movie Image not available"
-          [routerLink]="['/movie',t.id]">
+      <ng-container *ngFor="let m of receivedMovies">
+        <div class="movie-container">
+          <img src="{{ imageUrl }}/{{ m.poster_path }}" class="row-img large-poster" alt="Movie Image not available"
+               [routerLink]="['/movie', m.id]">
+          <p class="movie-title">{{ m.title }}</p>
+        </div>
       </ng-container>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row">
 
     </div>
-
   </div>
 
   <!-- comedy movies  -->
-  <div class="row mt-4" style="overflow-x: auto">
-    <h4 class="text-black">Comedy Movies</h4>
-    <div class="row-poster mt-3 p-2 comedy-movie">
-      <ng-container *ngFor="let c of comedyMovieResult">
-        <img src="{{ environment.imageBaseUrl }}/{{ c.poster_path }}" class="row-img large-poster" alt="Movie Image Not available"
-          [routerLink]="['/movie',c.id]">
-      </ng-container>
+<!--  <div class="row mt-4" style="overflow-x: auto">-->
+<!--    <h4 class="text-black">Comedy Movies</h4>-->
+<!--    <div class="row-poster mt-3 p-2 comedy-movie">-->
+<!--      <ng-container *ngFor="let c of comedyMovieResult">-->
+<!--        <img src="{{ environment.imageBaseUrl }}/{{ c.poster_path }}" class="row-img large-poster" alt="Movie Image Not available"-->
+<!--          [routerLink]="['/movie',c.id]">-->
+<!--      </ng-container>-->
 
-    </div>
+<!--    </div>-->
 
-  </div>
+<!--  </div>-->
 
   <!-- thriller movies  -->
-  <div class="row mt-4" style="overflow-x: auto">
-    <h4 class="text-black">Thriller Movies</h4>
-    <div class="row-poster mt-3 p-2 thriller-movie">
-      <ng-container *ngFor="let th of thrillerMovieResult">
-        <img src="{{ environment.imageBaseUrl }}/{{ th.poster_path }}" class="row-img large-poster" alt="Movie Image not available"
-          [routerLink]="['/movie',th.id]">
-      </ng-container>
+<!--  <div class="row mt-4" style="overflow-x: auto">-->
+<!--    <h4 class="text-black">Thriller Movies</h4>-->
+<!--    <div class="row-poster mt-3 p-2 thriller-movie">-->
+<!--      <ng-container *ngFor="let th of thrillerMovieResult">-->
+<!--        <img src="{{ environment.imageBaseUrl }}/{{ th.poster_path }}" class="row-img large-poster" alt="Movie Image not available"-->
+<!--          [routerLink]="['/movie',th.id]">-->
+<!--      </ng-container>-->
 
-    </div>
+<!--    </div>-->
 
-  </div>
+<!--  </div>-->
 
 </div>
