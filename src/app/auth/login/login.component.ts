@@ -50,7 +50,8 @@ navigateToRegister() {
           this.router.navigate(['home']);
         },
         (error) => {
-          alert("Incorrect email or password. Please try again!");
+          alert("You do not have an authorization token to access!");
+//           alert("Incorrect email or password. Please try again!");
         }
       );
     }
