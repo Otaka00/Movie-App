@@ -51,3 +51,12 @@ h5 {
 .movie-title {
   margin-top: 8px;
 }
+
+button{
+  border: solid;
+  border-radius: 25%;
+}
+
+button:not([disabled]):hover {
+  color: red;
+}

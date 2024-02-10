@@ -16,14 +16,13 @@ import { NgForm } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   imageUrl = environment.imageBaseUrl;
-  receivedMovies: MovieInterface[] = [];
-  searchedMovies: MovieInterface[] = [];
+  myMovies: MovieInterface[] = [];
   showMore: boolean[] = [];
-  categoryTitle: string = "";
   loading: boolean = true;
 
-  currentPage: number = 1;
-  pageSize: number = 4;
+  currentPage: number = 0;
+  pageSize: number = 7;
+  totalPages: number = 1;
   constructor(private movieService: MovieApiServiceService, private router: Router) { }
 
   // Declare environment as a public property
@@ -43,7 +42,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    console.log(this.imageUrl);
 
 //     const isReloaded = localStorage.getItem('isPageReloaded');
 //     this.isPageReloaded = true; // Variable to track if the page is reloaded
@@ -56,12 +54,12 @@ export class HomeComponent implements OnInit {
 //     this.comedyMovie();
 //     this.thrillerMovie();
   }
-//   this.currentPage - 1, this.pageSize
+
 getMovies(){
-      this.movieService.getMovies().subscribe((movies) => {
-      this.receivedMovies = movies;
+      this.movieService.getMovies(this.currentPage, this.pageSize).subscribe((movies) => {
+      this.myMovies = movies;
       this.loading = false;
-      this.showMore = new Array<boolean>(this.receivedMovies.length).fill(false);
+      this.showMore = new Array<boolean>(this.myMovies.length).fill(false);
     },
     (error)=>{
       this.loading = true;
@@ -70,6 +68,19 @@ getMovies(){
   onMovieClicked(id: number) {
     this.router.navigate(['Movie', id]);
   }
+
+    nextPage() {
+      this.currentPage++;
+      this.getMovies();
+    }
+
+    prevPage() {
+      if (this.currentPage > 0) {
+        this.currentPage--;
+        this.getMovies();
+      }
+    }
+
 //   trendingData() {
 //         if ((this.service.trendingMovieApiData()) instanceof Observable) {
 //       this.service.trendingMovieApiData().subscribe((result) => {
