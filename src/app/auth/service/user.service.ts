@@ -1,8 +1,8 @@
 // user.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,12 +17,16 @@ private isLoggedInSubject: BehaviorSubject<boolean>;
   }
 
   login(email: string, password: string): Observable<any> {
-    const loginData = { email, password };
+    const credentials = { email, password };
 
-    return this.http.post('http://localhost:8080/api/v1/auth/authenticate', loginData).pipe(
+    return this.http.post('http://localhost:8080/api/v1/auth/authenticate', credentials).pipe(
       tap((response: any) => {
         this.handleAuthentication(response.token);
-      })
+//         this.validateCredentials(email, password, response.token);
+      }),
+      catchError((error: any) => {
+            return of(false); // Return an observable with false in case of error
+          })
     );
   }
 
@@ -36,9 +40,9 @@ private isLoggedInSubject: BehaviorSubject<boolean>;
   }
 
   register(email: string, password: string ): Observable<any> {
-    const registerData = { email, password };
+    const credentials = { email, password };
 
-    return this.http.post('http://localhost:8080/api/v1/auth/register', registerData).pipe(
+    return this.http.post('http://localhost:8080/api/v1/auth/register', credentials).pipe(
 
       tap((response: any) => {
         this.handleAuthentication(response.token);
@@ -50,6 +54,33 @@ private isLoggedInSubject: BehaviorSubject<boolean>;
     localStorage.setItem(this.authTokenKey, token);
     this.isLoggedInSubject.next(true);
   }
+
+  private validateCredentials(email: string, password: string, token: string): Observable<boolean> {
+    // Make an API call to validate the user credentials
+    const credentials = { email, password };
+
+    return this.http.post('http://localhost:8080/api/v1/auth/validate', credentials).pipe(
+      map((validationResponse: any) => {
+        if (validationResponse.valid) {
+          // If the credentials are valid, set the authentication token
+          localStorage.setItem(this.authTokenKey, token);
+          this.isLoggedInSubject.next(true);
+          return true;
+        } else {
+          // If the credentials are not valid, handle accordingly
+          console.error('Invalid credentials');
+          return false;
+        }
+      }),
+      catchError((error) => {
+        // Handle API call error, e.g., network issue
+        console.error('Error validating credentials:', error);
+        return of(false); // Return an observable with false in case of error
+      })
+    );
+  }
+
+
 
   private isTokenAvailable(): boolean {
     return !!localStorage.getItem(this.authTokenKey);

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = true;
 
   currentPage: number = 0;
-  pageSize: number = 7;
+  pageSize: number = 6;
   totalPages: number = 1;
   constructor(private movieService: MovieApiServiceService, private router: Router) { }
 
